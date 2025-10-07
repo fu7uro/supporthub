@@ -1,2 +1,2 @@
-# supporthub
-Futuro Corporation™ Support &amp; Community Hub - v1.0 - deployed
+# FuturoClientHub
+Futuro Corporation™ Client Help Center and Community Forum
