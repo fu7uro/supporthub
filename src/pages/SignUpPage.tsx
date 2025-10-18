@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserPlus, AlertCircle, CheckCircle } from 'lucide-react'
-import { useAuth } from '../lib/auth'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({

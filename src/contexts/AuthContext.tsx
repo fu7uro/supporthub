@@ -11,6 +11,9 @@ export interface UserProfile {
   bio?: string;
   website?: string;
   location?: string;
+  company_name?: string;
+  industry?: string;
+  is_admin?: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -21,7 +24,7 @@ export interface AuthContextType {
   session: Session | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
-  signUp: (email: string, password: string, username?: string) => Promise<{ error: any }>;
+  signUp: (email: string, password: string, metadata?: any) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<UserProfile>) => Promise<{ error: any }>;
   refreshProfile: () => Promise<void>;
@@ -114,7 +117,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const signUp = async (email: string, password: string, username?: string) => {
+  const signUp = async (email: string, password: string, metadata?: any) => {
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -133,8 +136,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             {
               id: data.user.id,
               email: data.user.email!,
-              username: username || '',
-              full_name: '',
+              username: metadata?.username || '',
+              full_name: metadata?.full_name || '',
+              company_name: metadata?.company_name || '',
+              industry: metadata?.industry || '',
+              location: metadata?.location || '',
               created_at: new Date().toISOString(),
               updated_at: new Date().toISOString(),
             },

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Shield, Users, FileText, MessageCircle, Settings } from 'lucide-react'
-import { useAuth } from '../lib/auth'
+import { useAuth } from '../contexts/AuthContext'
 import { useQuery } from '@tanstack/react-query'
 import { supabase } from '../lib/supabase'
 

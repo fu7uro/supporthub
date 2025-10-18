@@ -165,6 +165,16 @@ export interface MediaFile {
   description?: string
 }
 
+export interface SearchResult {
+  id: number
+  title: string
+  description: string
+  content_type: 'article' | 'question' | 'forum_post' | 'feature_request'
+  created_at: string
+  view_count: number
+  relevance_score?: number
+}
+
 // Enhanced search function
 export const enhancedSearch = async (query: string, filters?: any) => {
   try {
@@ -237,3 +247,4 @@ export const searchAutocomplete = async (query: string) => {
     }
   }
 }
+
